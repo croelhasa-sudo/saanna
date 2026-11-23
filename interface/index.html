@@ -1,47 +1,248 @@
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Hospitalar</title>
+
+    <title>Delivery Express | Cardápio Digital</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <h1>Sistema Hospitalar</h1>
-        <p>Gerenciamento de pacientes</p>
+    <header class="topo">
+        <div class="topo-conteudo">
+
+            <div class="logo">
+                <span class="logo-icone">♡</span>
+
+                <div>
+                    <h1>Delivery Express</h1>
+                    <p>Sua lanchonete favorita</p>
+                </div>
+            </div>
+
+            <div class="status">
+                <span></span>
+                Sistema disponível
+            </div>
+
+        </div>
     </header>
 
-    <main>
-        <section class="formulario">
-            <h2>Cadastrar paciente</h2>
+    <main class="container">
 
-            <form id="formPaciente">
-                <input type="text" id="nome" placeholder="Nome completo" required>
+        <section class="apresentacao">
+            <span class="etiqueta">CARDÁPIO DIGITAL</span>
 
-                <input type="text" id="cpf" placeholder="CPF" required>
+            <h2>Faça seu pedido!</h2>
 
-                <input type="tel" id="telefone" placeholder="Telefone" required>
+            <p>
+                Escolha seus produtos, adicione ao carrinho
+                e informe seus dados para entrega.
+            </p>
+        </section>
 
-                <input type="number" id="idade" placeholder="Idade" min="0" max="130" required>
+        <!-- CARDÁPIO -->
 
-                <button type="submit">Cadastrar paciente</button>
+        <section class="cardapio">
+
+            <div class="secao-titulo">
+                <div>
+                    <h2>Nosso cardápio</h2>
+                    <p>Escolha seus favoritos.</p>
+                </div>
+
+                <span class="total-produtos" id="totalProdutos">
+                    0 produtos
+                </span>
+            </div>
+
+            <div class="categorias" id="categorias">
+
+                <button class="categoria ativa" data-categoria="Todos">
+                    Todos
+                </button>
+
+                <button class="categoria" data-categoria="Pizzas">
+                    🍕 Pizzas
+                </button>
+
+                <button class="categoria" data-categoria="Batatas fritas">
+                    🍟 Batatas fritas
+                </button>
+
+                <button class="categoria" data-categoria="Hambúrgueres">
+                    🍔 Hambúrgueres
+                </button>
+
+                <button class="categoria" data-categoria="Salgados">
+                    🥟 Salgados
+                </button>
+
+                <button class="categoria" data-categoria="Bebidas">
+                    🥤 Bebidas
+                </button>
+
+                <button class="categoria" data-categoria="Combos">
+                    🍱 Combos
+                </button>
+
+            </div>
+
+            <div class="produtos" id="listaProdutos"></div>
+
+        </section>
+
+        <!-- CARRINHO -->
+
+        <section class="carrinho">
+
+            <div class="secao-titulo">
+                <div>
+                    <h2>🛒 Seu carrinho</h2>
+                    <p>Confira os produtos selecionados.</p>
+                </div>
+
+                <span class="contador" id="contadorCarrinho">
+                    0 itens
+                </span>
+            </div>
+
+            <div class="itens-carrinho" id="itensCarrinho"></div>
+
+            <div class="resumo-financeiro">
+
+                <div class="linha-resumo">
+                    <span>Subtotal dos produtos</span>
+                    <strong id="subtotal">R$ 0,00</strong>
+                </div>
+
+                <div class="linha-resumo">
+                    <span>Taxa de entrega</span>
+                    <strong id="taxaResumo">R$ 0,00</strong>
+                </div>
+
+                <div class="linha-resumo total">
+                    <span>Total do pedido</span>
+                    <strong id="total">R$ 0,00</strong>
+                </div>
+
+                <button type="button" class="botao-limpar" id="limparCarrinho">
+                    Limpar carrinho
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- FINALIZAÇÃO -->
+
+        <section class="finalizacao">
+
+            <div class="secao-titulo">
+                <div>
+                    <h2>Finalizar pedido</h2>
+                    <p>Preencha seus dados para concluir.</p>
+                </div>
+            </div>
+
+            <form id="formPedido">
+
+                <h3>01. Dados do cliente</h3>
+
+                <div class="campos">
+
+                    <div class="campo">
+                        <label for="nome">Nome completo *</label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite seu nome"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefone">Telefone *</label>
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            placeholder="(00) 00000-0000"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo campo-completo">
+                        <label for="endereco">Endereço completo *</label>
+
+                        <input
+                            type="text"
+                            id="endereco"
+                            placeholder="Rua, número, bairro e complemento"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <h3>02. Pagamento</h3>
+
+                <div class="campos">
+
+                    <div class="campo campo-completo">
+                        <label for="pagamento">
+                            Forma de pagamento *
+                        </label>
+
+                        <select id="pagamento" required>
+
+                            <option value="">
+                                Selecione uma opção
+                            </option>
+
+                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="Pix">Pix</option>
+                            <option value="Cartão">Cartão</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="botoes-finalizacao">
+
+                    <button type="reset" class="botao-limpar">
+                        Limpar dados
+                    </button>
+
+                    <button type="submit" class="botao-finalizar">
+                        Finalizar pedido →
+                    </button>
+
+                </div>
+
+                <p class="observacao">
+                    * Campos obrigatórios.
+                </p>
+
             </form>
 
-            <p id="mensagem"></p>
         </section>
 
-        <section class="lista">
-            <h2>Pacientes cadastrados</h2>
-
-            <div id="pacientes">
-                Carregando pacientes...
-            </div>
-        </section>
     </main>
 
+    <footer>
+        <h2>Delivery Express</h2>
+        <p>Sua lanchonete favorita.</p>
+        <p>Desenvolvido por Anna · 2026</p>
+    </footer>
+
     <script src="script.js"></script>
+
 </body>
 </html>
