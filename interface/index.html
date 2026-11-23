@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Hospitalar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sistema Hospitalar</h1>
+        <p>Gerenciamento de pacientes</p>
+    </header>
+
+    <main>
+        <section class="formulario">
+            <h2>Cadastrar paciente</h2>
+
+            <form id="formPaciente">
+                <input type="text" id="nome" placeholder="Nome completo" required>
+
+                <input type="text" id="cpf" placeholder="CPF" required>
+
+                <input type="tel" id="telefone" placeholder="Telefone" required>
+
+                <input type="number" id="idade" placeholder="Idade" min="0" max="130" required>
+
+                <button type="submit">Cadastrar paciente</button>
+            </form>
+
+            <p id="mensagem"></p>
+        </section>
+
+        <section class="lista">
+            <h2>Pacientes cadastrados</h2>
+
+            <div id="pacientes">
+                Carregando pacientes...
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
